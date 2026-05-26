@@ -1,0 +1,88 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ─────────────────────────────────────────────
+// User – populated on Google sign-in
+// ─────────────────────────────────────────────
+model User {
+  id             String   @id @default(uuid())
+  name           String?
+  email          String   @unique
+  image          String?
+  maxScorer      String?  // jugador elegido como máximo goleador
+  favoriteTeam   String?  // equipo preferido
+  bankOwner      String?  // titular del pago
+  bankName       String?  // banco
+  bankAccount    String?  // cuenta o teléfono de pago móvil
+  phoneNumber    String?  // teléfono de contacto
+  paymentRef     String?  // referencia de pago
+  paymentReceipt String?  // URL/Base64 de la foto del comprobante
+  status         String   @default("PENDIENTE") // PENDIENTE | ACTIVO | RECHAZADO
+  role           String   @default("USER")      // USER | ADMIN
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  ownedLeagues   League[]       @relation("OwnedLeagues")
+  memberships    LeagueMember[]
+  predictions    Prediction[]
+}
+
+// ─────────────────────────────────────────────
+// Predictions – one per user per match
+// ─────────────────────────────────────────────
+model Prediction {
+  userId    String
+  matchId   Int
+  homeScore Int
+  awayScore Int
+  isDouble  Boolean  @default(false)
+  auditHash String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, matchId])
+}
+
+// ─────────────────────────────────────────────
+// MatchResult – one per match (set by admin simulator)
+// ─────────────────────────────────────────────
+model MatchResult {
+  matchId   Int      @id
+  homeScore Int
+  awayScore Int
+  status    String   @default("scheduled") // scheduled | live | finished
+  updatedAt DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Private Leagues
+// ─────────────────────────────────────────────
+model League {
+  id           String   @id @default(uuid())
+  name         String
+  ownerId      String
+  owner        User     @relation("OwnedLeagues", fields: [ownerId], references: [id], onDelete: Cascade)
+  inviteCode   String   @unique
+  passwordHash String?
+  createdAt    DateTime @default(now())
+
+  members      LeagueMember[]
+}
+
+model LeagueMember {
+  leagueId String
+  userId   String
+
+  league   League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([leagueId, userId])
+}
