@@ -14,10 +14,10 @@ frontend:
         - printf "GOOGLE_CLIENT_SECRET=%s\n" "$GOOGLE_CLIENT_SECRET" >> .env.production
         - printf "EMERGENCY_ADMIN_EMAIL=%s\n" "$EMERGENCY_ADMIN_EMAIL" >> .env.production
         - printf "EMERGENCY_ADMIN_PASSWORD=%s\n" "$EMERGENCY_ADMIN_PASSWORD" >> .env.production
-        - printf "AWS_ACCESS_KEY_ID=%s\n" "$AWS_ACCESS_KEY_ID" >> .env.production
-        - printf "AWS_SECRET_ACCESS_KEY=%s\n" "$AWS_SECRET_ACCESS_KEY" >> .env.production
-        - printf "AWS_REGION=%s\n" "$AWS_REGION" >> .env.production
-        - printf "AWS_S3_BUCKET_NAME=%s\n" "$AWS_S3_BUCKET_NAME" >> .env.production
+        - printf "APP_AWS_ACCESS_KEY_ID=%s\n" "$APP_AWS_ACCESS_KEY_ID" >> .env.production
+        - printf "APP_AWS_SECRET_ACCESS_KEY=%s\n" "$APP_AWS_SECRET_ACCESS_KEY" >> .env.production
+        - printf "APP_AWS_REGION=%s\n" "$APP_AWS_REGION" >> .env.production
+        - printf "APP_AWS_S3_BUCKET_NAME=%s\n" "$APP_AWS_S3_BUCKET_NAME" >> .env.production
         # Generar el cliente de Prisma (obligatorio antes de compilar Next.js en entornos frescos de CI/CD)
         - npx prisma generate
         # Compilar la aplicación
