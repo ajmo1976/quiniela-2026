@@ -15,6 +15,8 @@ interface Member {
   name: string;
   image: string | null;
   email: string;
+  points?: number;
+  rank?: number;
 }
 
 interface LeagueDetails {
@@ -33,6 +35,14 @@ export default function LeagueDetailPage() {
   const leagueId = params.id as string;
   
   const { data: session } = useSession();
+
+  const getRankBadgeStyle = (rank?: number) => {
+    if (rank === 1) return "bg-gradient-to-r from-amber-400 to-yellow-600 text-black font-black shadow-amber-500/20";
+    if (rank === 2) return "bg-gradient-to-r from-slate-300 to-slate-500 text-black font-black shadow-slate-400/20";
+    if (rank === 3) return "bg-gradient-to-r from-amber-700 to-amber-950 text-white font-black shadow-amber-900/20";
+    return "bg-white/10 text-white/60 font-bold border border-white/5";
+  };
+
   const { leagues, deleteLeague, removeMember, renameLeague } = useTournament();
   
   const [leagueDetails, setLeagueDetails] = useState<LeagueDetails | null>(null);
@@ -290,6 +300,11 @@ export default function LeagueDetailPage() {
                   title="Haga clic para auditar pronósticos de este miembro"
                 >
                   <div className="flex items-center gap-3">
+                    {/* Rank Badge */}
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] shrink-0 font-bold ${getRankBadgeStyle(member.rank)}`}>
+                      #{member.rank ?? (i + 1)}
+                    </div>
+
                     <div className="w-8 h-8 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
                       {member.image ? (
                         <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
@@ -312,22 +327,30 @@ export default function LeagueDetailPage() {
                       <span className="text-[10px] text-slate-500 dark:text-white/30 block leading-tight">{member.email}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[9px] uppercase tracking-wider text-white/20 group-hover/member:text-amber-500/60 font-black transition-colors flex items-center gap-1">
-                      <Eye size={12} /> Auditar
-                    </span>
-                    {isOwner && !isMe && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleRemoveMember(member.userId);
-                        }}
-                        className="p-1.5 text-slate-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
-                        title="Eliminar miembro"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    )}
+                  <div className="flex items-center gap-4">
+                    {/* Points display */}
+                    <div className="text-right font-black flex items-center">
+                      <span className="text-base text-amber-500">{member.points ?? 0}</span>
+                      <span className="text-[9px] text-slate-500 dark:text-white/40 uppercase ml-1">pts</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="text-[9px] uppercase tracking-wider text-white/20 group-hover/member:text-amber-500/60 font-black transition-colors flex items-center gap-1">
+                        <Eye size={12} /> Auditar
+                      </span>
+                      {isOwner && !isMe && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleRemoveMember(member.userId);
+                          }}
+                          className="p-1.5 text-slate-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+                          title="Eliminar miembro"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               );

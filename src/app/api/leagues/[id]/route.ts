@@ -5,6 +5,38 @@ import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
+const ACTUAL_TOP_SCORER = 'Lionel Messi';
+
+function calcPoints(
+  predictions: { matchId: number; homeScore: number; awayScore: number; isDouble: boolean }[],
+  results: Map<number, { homeScore: number; awayScore: number; status: string }>,
+  maxScorer: string | null
+): number {
+  let pts = 0;
+
+  for (const pred of predictions) {
+    const result = results.get(pred.matchId);
+    if (!result || result.status !== 'finished') continue;
+
+    const isExact = pred.homeScore === result.homeScore && pred.awayScore === result.awayScore;
+    const predOutcome = pred.homeScore > pred.awayScore ? 'home' : pred.homeScore < pred.awayScore ? 'away' : 'draw';
+    const realOutcome = result.homeScore > result.awayScore ? 'home' : result.homeScore < result.awayScore ? 'away' : 'draw';
+    const isOutcomeCorrect = predOutcome === realOutcome;
+
+    if (isOutcomeCorrect) {
+      if (pred.isDouble) {
+        pts += isExact ? 6 : 2;
+      } else {
+        pts += isExact ? 3 : 1;
+      }
+    }
+  }
+
+  if (maxScorer && maxScorer === ACTUAL_TOP_SCORER) pts += 15;
+
+  return pts;
+}
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } }
@@ -15,10 +47,25 @@ export async function GET(
   }
 
   try {
+    const matchResults = await prisma.matchResult.findMany({
+      where: { status: 'finished' },
+    });
+    const resultsMap = new Map(
+      matchResults.map((r) => [r.matchId, { homeScore: r.homeScore, awayScore: r.awayScore, status: r.status }])
+    );
+
     const league = await prisma.league.findUnique({
       where: { id: params.id },
       include: {
-        members: { include: { user: { select: { id: true, name: true, image: true, email: true } } } },
+        members: {
+          include: {
+            user: {
+              include: {
+                predictions: true,
+              },
+            },
+          },
+        },
         _count: { select: { members: true } },
       },
     });
@@ -26,6 +73,25 @@ export async function GET(
     if (!league) {
       return NextResponse.json({ success: false, error: 'Liga no encontrada' }, { status: 404 });
     }
+
+    const membersWithPoints = league.members.map((m) => {
+      const user = m.user;
+      const points = user ? calcPoints(user.predictions, resultsMap, user.maxScorer) : 0;
+      return {
+        userId: m.userId,
+        name: user?.name ?? 'Usuario',
+        image: user?.image ?? null,
+        email: user?.email ?? '',
+        points,
+      };
+    });
+
+    membersWithPoints.sort((a, b) => b.points - a.points);
+
+    const rankedMembers = membersWithPoints.map((member, index) => ({
+      ...member,
+      rank: index + 1,
+    }));
 
     return NextResponse.json({
       success: true,
@@ -36,12 +102,7 @@ export async function GET(
         inviteCode: league.inviteCode,
         memberCount: league._count.members,
         memberIds: league.members.map((m) => m.userId),
-        members: league.members.map((m) => ({
-          userId: m.userId,
-          name: m.user?.name ?? 'Usuario',
-          image: m.user?.image ?? null,
-          email: m.user?.email ?? '',
-        })),
+        members: rankedMembers,
         createdAt: league.createdAt.toISOString(),
       },
     });
