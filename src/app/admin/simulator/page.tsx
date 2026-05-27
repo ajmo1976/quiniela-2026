@@ -22,8 +22,7 @@ import {
   AlertCircle,
   Lock
 } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import UserMenu from "@/components/UserMenu";
+import Navbar from "@/components/Navbar";
 import { ALL_MATCHES } from "@/app/matches/matchesData";
 import { useTournament } from "@/lib/TournamentContext";
 
@@ -170,22 +169,7 @@ export default function AdminSimulatorPage() {
 
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-[#0a0a0c] text-slate-900 dark:text-white transition-colors duration-300">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10 px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <Settings className="text-amber-500 animate-spin" size={24} style={{ animationDuration: '6s' }} />
-          <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
-            CONSOLA SIMULADOR
-          </span>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-sm font-medium hover:text-amber-500 transition-colors">Dashboard</Link>
-          <Link href="/matches" className="text-sm font-medium hover:text-amber-500 transition-colors">Partidos</Link>
-          <Link href="/groups" className="text-sm font-medium hover:text-amber-500 transition-colors">Grupos</Link>
-          <ThemeToggle />
-          <UserMenu />
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 pt-28 pb-20">
         {/* Header Control Panel */}

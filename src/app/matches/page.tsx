@@ -5,10 +5,9 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import MatchCard from "@/components/MatchCard";
 import { ChevronLeft, Filter, Calendar, LayoutGrid } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import UserMenu from "@/components/UserMenu";
-import { ALL_MATCHES } from "./matchesData";
+import Navbar from "@/components/Navbar";
 import { useTournament } from "@/lib/TournamentContext";
+import { ALL_MATCHES } from "./matchesData";
 
 const GROUPS = ["TODOS", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 
@@ -38,21 +37,7 @@ export default function MatchesPage() {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-[#0a0a0c] text-slate-900 dark:text-white transition-colors duration-300">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10 px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <img src="/world-cup-logo.png" alt="WC 2026" className="w-10 h-10 object-contain" />
-          <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
-            QUINIELA 2026
-          </span>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-sm font-medium hover:text-amber-500 transition-colors">Dashboard</Link>
-          <Link href="/matches" className="text-sm font-medium text-amber-500 underline decoration-2 underline-offset-4">Partidos</Link>
-          <Link href="/groups" className="text-sm font-medium hover:text-amber-500 transition-colors">Grupos</Link>
-          <ThemeToggle />
-          <UserMenu />
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 pt-24 pb-20">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">

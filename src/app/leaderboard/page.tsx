@@ -5,8 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Trophy, ArrowLeft, Medal, TrendingUp, User as UserIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import UserMenu from "@/components/UserMenu";
+import Navbar from "@/components/Navbar";
 
 interface LeaderboardUser {
   id: string;
@@ -53,22 +52,7 @@ export default function LeaderboardPage() {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-[#0a0a0c] text-slate-900 dark:text-white transition-colors duration-300">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10 px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <img src="/world-cup-logo.png" alt="WC 2026" className="w-10 h-10 object-contain" />
-          <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
-            QUINIELA 2026
-          </span>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-sm font-medium hover:text-amber-500 transition-colors">Dashboard</Link>
-          <Link href="/matches" className="text-sm font-medium hover:text-amber-500 transition-colors">Partidos</Link>
-          <Link href="/groups" className="text-sm font-medium hover:text-amber-500 transition-colors">Grupos</Link>
-          <Link href="/leagues" className="text-sm font-medium hover:text-amber-500 transition-colors">Ligas</Link>
-          <ThemeToggle />
-          <UserMenu />
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="max-w-4xl mx-auto px-4 pt-28 pb-20">
         <Link
