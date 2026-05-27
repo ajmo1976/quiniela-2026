@@ -273,12 +273,9 @@ export default function LoginPage() {
           </p>
 
           {/* Branding */}
-          <div className="mt-6 pt-5 border-t border-white/5 flex items-center justify-center gap-2.5 opacity-40 hover:opacity-75 transition-opacity">
-            <img src="/ayg-logo.png" alt="A&G System Solutions, C.A." className="h-6 w-auto object-contain" />
-            <div className="flex flex-col text-left">
-              <span className="text-[8px] font-bold text-white/50 uppercase tracking-widest leading-none">Desarrollado por</span>
-              <span className="text-[10px] font-black text-white uppercase tracking-tight">A&G System Solutions, C.A.</span>
-            </div>
+          <div className="mt-6 pt-5 border-t border-white/5 flex flex-col items-center justify-center gap-1 opacity-40 hover:opacity-75 transition-opacity">
+            <span className="text-[8px] font-bold text-white/50 uppercase tracking-widest leading-none">Desarrollado por</span>
+            <span className="text-[10px] font-black text-white uppercase tracking-tight">A&G System Solutions, C.A.</span>
           </div>
         </div>
       </motion.div>
