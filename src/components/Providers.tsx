@@ -3,6 +3,7 @@
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { TournamentProvider } from "@/lib/TournamentContext";
+import RulesAcceptanceOverlay from "@/components/RulesAcceptanceOverlay";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +14,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        <TournamentProvider>{children}</TournamentProvider>
+        <TournamentProvider>
+          <RulesAcceptanceOverlay />
+          {children}
+        </TournamentProvider>
       </ThemeProvider>
     </SessionProvider>
   );

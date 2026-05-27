@@ -25,6 +25,7 @@ model User {
   paymentReceipt String?  // URL/Base64 de la foto del comprobante
   status         String   @default("PENDIENTE") // PENDIENTE | ACTIVO | RECHAZADO
   role           String   @default("USER")      // USER | ADMIN
+  rulesAccepted  Boolean  @default(false)       // aceptación del acuerdo y reglas
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 

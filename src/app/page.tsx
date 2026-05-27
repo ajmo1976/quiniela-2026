@@ -236,13 +236,56 @@ export default function Home() {
               </div>
 
               {/* Prizes Pool */}
-              <div className="space-y-2">
-                <h3 className="text-sm font-black uppercase tracking-wide text-blue-400">
-                  🎁 Premiación
+              <div className="space-y-3">
+                <h3 className="text-sm font-black uppercase tracking-wide text-blue-400 flex items-center gap-2">
+                  🎁 Distribución de Premios
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Todo lo recaudado por concepto de entradas ($5 USD) se sumará al pozo general de premios. Al finalizar el torneo, el pozo total se distribuirá entre el <strong>1er, 2do y 3er lugar</strong> del Ranking Global.
+                  Del total recaudado por inscripciones ($5 USD por persona), el <strong>70% se destina al pozo de premios</strong> y se distribuye entre los <strong>primeros 5 puestos</strong> del Ranking Global. El 30% restante se destina a gastos operativos y mantenimiento de la plataforma.
                 </p>
+                <div className="bg-white/5 p-4 rounded-2xl border border-white/5 space-y-4">
+                  <p className="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-white/50 border-b border-white/5 pb-2">
+                    Ejemplo Ilustrativo (Con 120 participantes):
+                  </p>
+                  <div className="grid grid-cols-2 gap-y-2 text-xs font-outfit">
+                    <span className="text-slate-600 dark:text-slate-400">Recaudación Total:</span>
+                    <span className="font-bold text-right">$600 (100%)</span>
+                    <span className="text-slate-600 dark:text-slate-400">Gastos Operativos / Organizador:</span>
+                    <span className="font-bold text-right text-red-400">$180 (30%)</span>
+                    <span className="text-slate-600 dark:text-slate-400 font-bold text-amber-500">Pozo Total para Premios:</span>
+                    <span className="font-black text-right text-amber-500">$420 (70%)</span>
+                  </div>
+                  <div className="h-px bg-white/5" />
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/50">Reparto del Pozo General:</p>
+                    <div className="grid grid-cols-2 gap-y-2 text-xs">
+                      <div className="flex items-center gap-1.5 font-bold text-white">
+                        <span>🥇 1er Lugar (55%):</span>
+                      </div>
+                      <span className="font-black text-right text-amber-500">$230 <span className="text-[9px] text-slate-500 font-medium font-inter">(¡Multiplica tu inversión por 46!)</span></span>
+
+                      <div className="flex items-center gap-1.5 font-bold text-slate-300">
+                        <span>🥈 2do Lugar (20%):</span>
+                      </div>
+                      <span className="font-black text-right text-slate-300">$85</span>
+
+                      <div className="flex items-center gap-1.5 font-bold text-amber-700">
+                        <span>🥉 3er Lugar (12%):</span>
+                      </div>
+                      <span className="font-black text-right text-amber-700">$50</span>
+
+                      <div className="flex items-center gap-1.5 text-slate-400 font-bold">
+                        <span>🏅 4to Lugar (8%):</span>
+                      </div>
+                      <span className="font-black text-right text-slate-400">$35</span>
+
+                      <div className="flex items-center gap-1.5 text-slate-400 font-bold">
+                        <span>🏅 5to Lugar (5%):</span>
+                      </div>
+                      <span className="font-black text-right text-slate-400">$20</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Disclaimer Agreement */}

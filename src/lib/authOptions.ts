@@ -132,6 +132,7 @@ export const authOptions: NextAuthOptions = {
           // Only put the image in the token if it's a short URL (not a base64 data URL)
           token.dbImage = dbUser.image && !dbUser.image.startsWith("data:") ? dbUser.image : null;
           token.role = dbUser.role;
+          token.rulesAccepted = dbUser.rulesAccepted;
         }
       }
       return token;
@@ -141,6 +142,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         (session.user as any).id = token.userId as string;
         (session.user as any).role = (token.role as string) ?? "USER";
+        (session.user as any).rulesAccepted = (token.rulesAccepted as boolean) ?? false;
         session.user.name = (token.dbName as string) ?? session.user.name;
         session.user.image = (token.dbImage as string) ?? session.user.image;
       }
