@@ -172,7 +172,7 @@ export default function DashboardPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative mb-10 glass-card border border-white/10 rounded-3xl p-8 overflow-hidden shadow-2xl"
+          className="relative mb-10 glass-card border border-slate-200 dark:border-white/10 rounded-3xl p-8 overflow-hidden shadow-2xl"
         >
           {/* background glow */}
           <div className="absolute -top-16 -right-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -207,7 +207,7 @@ export default function DashboardPage() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-white/50 text-sm font-medium mb-1"
+                  className="text-slate-500 dark:text-white/50 text-sm font-medium mb-1"
                 >
                   {greeting},
                 </motion.p>
@@ -223,7 +223,7 @@ export default function DashboardPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-white/40 text-sm mt-1"
+                  className="text-slate-500 dark:text-white/40 text-sm mt-1"
                 >
                   {user?.email ?? ""}
                 </motion.p>
@@ -239,31 +239,31 @@ export default function DashboardPage() {
             >
               <div className="text-center">
                 <p className="text-3xl font-black text-amber-500">{userPoints}</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-widest font-bold">Puntos</p>
+                <p className="text-[11px] text-slate-500 dark:text-white/40 uppercase tracking-widest font-bold">Puntos</p>
               </div>
-              <div className="w-px bg-white/10 hidden sm:block" />
+              <div className="w-px bg-slate-200 dark:bg-white/10 hidden sm:block" />
               <div className="text-center">
                 <p className="text-3xl font-black text-teal-400">{myLeagues.length}</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-widest font-bold">Ligas</p>
+                <p className="text-[11px] text-slate-500 dark:text-white/40 uppercase tracking-widest font-bold">Ligas</p>
               </div>
-              <div className="w-px bg-white/10 hidden sm:block" />
+              <div className="w-px bg-slate-200 dark:bg-white/10 hidden sm:block" />
               <div className="text-center">
                 <p className="text-3xl font-black text-purple-400">{rankingVal}</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-widest font-bold">Ranking</p>
+                <p className="text-[11px] text-slate-500 dark:text-white/40 uppercase tracking-widest font-bold">Ranking</p>
               </div>
             </motion.div>
           </div>
 
           {/* Level progress bar */}
-          <div className="mt-6 pt-6 border-t border-white/5">
+          <div className="mt-6 pt-6 border-t border-slate-200 dark:border-white/5">
             <div className="flex justify-between items-center mb-2">
               <div className="flex items-center gap-2">
                 <Medal size={14} className="text-purple-400" />
-                <span className="text-xs font-black uppercase text-white/60">Nivel: <span className="text-purple-400">{levelVal}</span></span>
+                <span className="text-xs font-black uppercase text-slate-600 dark:text-white/60">Nivel: <span className="text-purple-400">{levelVal}</span></span>
               </div>
-              <span className="text-xs text-white/30">{levelTrend}</span>
+              <span className="text-xs text-slate-500 dark:text-white/30">{levelTrend}</span>
             </div>
-            <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+            <div className="w-full h-1.5 bg-slate-200 dark:bg-white/5 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${Math.min(100, (userPoints / 30) * 100)}%` }}
@@ -287,7 +287,7 @@ export default function DashboardPage() {
           <div className="lg:col-span-2 space-y-8">
 
             {/* Recent Results */}
-            <div className="glass-card border border-white/10 p-8 shadow-2xl relative overflow-hidden group">
+            <div className="glass-card border border-slate-200 dark:border-white/10 p-8 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Star size={120} />
               </div>
@@ -351,7 +351,7 @@ export default function DashboardPage() {
 
             {/* My Leagues */}
             {myLeagues.length > 0 && (
-              <div className="glass-card border border-white/10 p-8 shadow-xl">
+              <div className="glass-card border border-slate-200 dark:border-white/10 p-8 shadow-xl">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-black flex items-center gap-3 uppercase tracking-wider">
                     <Shield className="text-teal-400" size={20} />
@@ -405,7 +405,7 @@ export default function DashboardPage() {
                     <Link href="/leagues/create" className="flex-1 flex items-center justify-center gap-2 py-2 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 font-black text-xs rounded-xl border border-teal-500/20 transition-colors">
                       <PlusCircle size={14} /> Crear Liga
                     </Link>
-                    <Link href="/leagues/join" className="flex-1 flex items-center justify-center gap-2 py-2 bg-white/5 hover:bg-white/10 font-black text-xs rounded-xl border border-white/10 transition-colors">
+                    <Link href="/leagues/join" className="flex-1 flex items-center justify-center gap-2 py-2 bg-slate-100/50 hover:bg-slate-200/50 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-white font-black text-xs rounded-xl border border-slate-200 dark:border-white/10 transition-colors">
                       <LogIn size={14} /> Unirse a Liga
                     </Link>
                   </div>
@@ -414,9 +414,9 @@ export default function DashboardPage() {
             )}
 
             {/* Bonos */}
-            <div className="glass-card border border-white/10 p-6 shadow-xl bg-gradient-to-br from-amber-500/10 to-transparent">
+            <div className="glass-card border border-slate-200 dark:border-white/10 p-6 shadow-xl bg-gradient-to-br from-amber-500/10 to-transparent">
               <h3 className="text-sm font-black text-amber-500/60 mb-4 uppercase tracking-widest">Bonos Especiales</h3>
-              <p className="text-xs text-white/60 mb-4 italic">No olvides elegir a tu Máximo Goleador antes del 11 de Junio.</p>
+              <p className="text-xs text-slate-600 dark:text-white/60 mb-4 italic">No olvides elegir a tu Máximo Goleador antes del 11 de Junio.</p>
               {maxScorer && <p className="text-xs text-amber-500 mb-2">Goleador seleccionado: <span className="font-bold">{maxScorer}</span></p>}
               <button onClick={() => setShowScorerModal(true)} className="px-4 py-2 bg-amber-500 rounded-lg text-xs font-black uppercase">
                 Elegir ahora
@@ -456,7 +456,7 @@ export default function DashboardPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Top Global */}
-            <div className="glass-card border border-white/10 p-6 shadow-xl">
+            <div className="glass-card border border-slate-200 dark:border-white/10 p-6 shadow-xl">
               <h2 className="text-lg font-black mb-6 flex items-center gap-3 uppercase">
                 <Trophy className="text-amber-500" size={18} />
                 Top Global
@@ -515,7 +515,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Countdown */}
-            <div className="glass-card border border-white/10 p-6 shadow-xl text-center relative overflow-hidden bg-gradient-to-br from-amber-500/10 to-transparent">
+            <div className="glass-card border border-slate-200 dark:border-white/10 p-6 shadow-xl text-center relative overflow-hidden bg-gradient-to-br from-amber-500/10 to-transparent">
               <div className="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="text-amber-500" />
               </div>
@@ -542,14 +542,14 @@ function StatCard({ title, value, icon, trend, color }: any) {
   return (
     <motion.div whileHover={{ y: -5 }} className={`glass-card p-6 border bg-gradient-to-br ${colorMap[color]} shadow-xl`}>
       <div className="flex justify-between items-start mb-4">
-        <div className="p-2 bg-white/5 rounded-lg">{icon}</div>
+        <div className="p-2 bg-black/5 dark:bg-white/5 rounded-lg">{icon}</div>
       </div>
       <div className="flex flex-col">
-        <span className="text-3xl font-black tracking-tighter mb-1">{value}</span>
-        <span className="text-xs font-black text-white/40 uppercase tracking-widest">{title}</span>
+        <span className="text-3xl font-black tracking-tighter mb-1 text-slate-900 dark:text-white">{value}</span>
+        <span className="text-xs font-black text-slate-500 dark:text-white/40 uppercase tracking-widest">{title}</span>
       </div>
-      <div className="mt-4 pt-4 border-t border-white/5">
-        <span className="text-[10px] font-bold text-white/60">{trend}</span>
+      <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/5">
+        <span className="text-[10px] font-bold text-slate-600 dark:text-white/60">{trend}</span>
       </div>
     </motion.div>
   );
@@ -570,26 +570,26 @@ function ResultRow({ date, home, homeFlag, away, awayFlag, pred, result, points,
   if (!date || !result) return null;
   const [scoreHome, scoreAway] = result.split("-");
   return (
-    <div className="flex items-center gap-4 p-3 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition-all group">
-      <div className="flex flex-col items-center justify-center min-w-[45px] py-1 border-r border-white/10">
-        <span className="text-[10px] font-black text-white/30 uppercase leading-none">{date.split(" ")[1] || ""}</span>
+    <div className="flex items-center gap-4 p-3 bg-black/5 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all group">
+      <div className="flex flex-col items-center justify-center min-w-[45px] py-1 border-r border-slate-200 dark:border-white/10">
+        <span className="text-[10px] font-black text-slate-400 dark:text-white/30 uppercase leading-none">{date.split(" ")[1] || ""}</span>
         <span className="text-sm font-black leading-none">{date.split(" ")[0] || ""}</span>
       </div>
       <div className="flex-1 flex items-center justify-center gap-4">
         <div className="flex items-center gap-3 flex-1 justify-end">
           <span className="text-xs font-black uppercase truncate hidden sm:block">{home}</span>
           <span className="text-2xl">{homeFlag}</span>
-          <span className="text-xl font-black text-white">{scoreHome}</span>
+          <span className="text-xl font-black text-slate-900 dark:text-white">{scoreHome}</span>
         </div>
-        <span className="text-[10px] font-black text-white/10">VS</span>
+        <span className="text-[10px] font-black text-slate-300 dark:text-white/10">VS</span>
         <div className="flex items-center gap-3 flex-1 justify-start">
-          <span className="text-xl font-black text-white">{scoreAway}</span>
+          <span className="text-xl font-black text-slate-900 dark:text-white">{scoreAway}</span>
           <span className="text-2xl">{awayFlag}</span>
           <span className="text-xs font-black uppercase truncate hidden sm:block">{away}</span>
         </div>
       </div>
-      <div className="flex flex-col items-end px-4 border-l border-white/5">
-        <span className="text-[9px] font-black text-white/20 uppercase tracking-widest flex items-center gap-1">
+      <div className="flex flex-col items-end px-4 border-l border-slate-200 dark:border-white/5">
+        <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest flex items-center gap-1">
           {isDouble && <Zap size={10} className="text-amber-500 fill-amber-500 animate-pulse" />}
           Tu Pronóstico
         </span>

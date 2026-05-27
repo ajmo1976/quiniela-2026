@@ -167,9 +167,9 @@ export default function MatchCard({ id, homeTeam, awayTeam, date, time, kickoff,
       </div>
 
       {/* Venue Indicator */}
-      <div className="absolute top-0 left-0 px-3 py-1 bg-white/5 border-r border-b border-white/10 rounded-br-xl flex items-center gap-2">
+      <div className="absolute top-0 left-0 px-3 py-1 bg-black/5 dark:bg-white/5 border-r border-b border-slate-200 dark:border-white/10 rounded-br-xl flex items-center gap-2">
         <span className="text-[10px]">{VENUE_FLAGS[venue.country]}</span>
-        <span className="text-[8px] font-bold text-white/40 uppercase tracking-tighter">{venue.city}</span>
+        <span className="text-[8px] font-bold text-slate-500 dark:text-white/40 uppercase tracking-tighter">{venue.city}</span>
       </div>
 
       {/* Dynamic Status Badge */}
@@ -199,7 +199,7 @@ export default function MatchCard({ id, homeTeam, awayTeam, date, time, kickoff,
           <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] font-outfit">
             GRUPO {group} • {date}
           </span>
-          <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest">{time} VET</span>
+          <span className="text-[9px] font-bold text-slate-400 dark:text-white/30 uppercase tracking-widest">{time} VET</span>
         </div>
       </div>
 
@@ -223,37 +223,37 @@ export default function MatchCard({ id, homeTeam, awayTeam, date, time, kickoff,
                 type="number" 
                 value={homeScore}
                 onChange={(e) => setHomeScore(e.target.value)}
-                className="w-12 h-14 bg-white/5 border border-white/10 rounded-xl text-center text-2xl font-black font-outfit focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="w-12 h-14 bg-black/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl text-center text-2xl font-black font-outfit focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-slate-900 dark:text-white"
                 placeholder="-"
               />
-              <span className="text-white/20 italic font-black text-xs font-outfit">VS</span>
+              <span className="text-slate-400 dark:text-white/20 italic font-black text-xs font-outfit">VS</span>
               <input 
                 type="number" 
                 value={awayScore}
                 onChange={(e) => setAwayScore(e.target.value)}
-                className="w-12 h-14 bg-white/5 border border-white/10 rounded-xl text-center text-2xl font-black font-outfit focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="w-12 h-14 bg-black/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl text-center text-2xl font-black font-outfit focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-slate-900 dark:text-white"
                 placeholder="-"
               />
             </div>
           ) : (
             <div className="flex flex-col items-center gap-2">
               <div className="flex items-center gap-3">
-                <span className={`text-3xl font-black font-outfit ${liveMatch.status === "live" ? "text-red-500 animate-pulse" : "text-white"}`}>
+                <span className={`text-3xl font-black font-outfit ${liveMatch.status === "live" ? "text-red-500 animate-pulse" : "text-slate-900 dark:text-white"}`}>
                   {liveMatch.homeScore ?? 0}
                 </span>
                 <span className={`text-[8px] font-black px-1.5 py-0.5 rounded ${
                   liveMatch.status === "live" 
                   ? "bg-red-500/20 text-red-400 border border-red-500/30 animate-pulse" 
-                  : "bg-white/10 text-white/50 border border-white/10"
+                  : "bg-black/5 dark:bg-white/10 text-slate-500 dark:text-white/50 border border-slate-200 dark:border-white/10"
                 }`}>
                   {liveMatch.status === "live" ? "LIVE" : "FINAL"}
                 </span>
-                <span className={`text-3xl font-black font-outfit ${liveMatch.status === "live" ? "text-red-500 animate-pulse" : "text-white"}`}>
+                <span className={`text-3xl font-black font-outfit ${liveMatch.status === "live" ? "text-red-500 animate-pulse" : "text-slate-900 dark:text-white"}`}>
                   {liveMatch.awayScore ?? 0}
                 </span>
               </div>
               
-              <div className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-md text-[8px] font-black text-white/40 uppercase tracking-widest">
+              <div className="px-2 py-0.5 bg-black/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-md text-[8px] font-black text-slate-500 dark:text-white/40 uppercase tracking-widest">
                 Tu Pred: <span className="text-amber-500 tracking-normal">{homeScore !== "" ? `${homeScore}-${awayScore}` : "-"}</span>
               </div>
             </div>
@@ -272,10 +272,10 @@ export default function MatchCard({ id, homeTeam, awayTeam, date, time, kickoff,
       </div>
 
       {/* Footer Info */}
-      <div className="mt-8 pt-4 border-t border-white/5 flex justify-between items-center">
+      <div className="mt-8 pt-4 border-t border-slate-200 dark:border-white/5 flex justify-between items-center">
         <div className="flex flex-col">
-          <span className="text-[8px] font-black text-white/20 uppercase tracking-tighter mb-1">Estadio</span>
-          <span className="text-[9px] font-bold text-white/50 uppercase tracking-tighter truncate max-w-[150px] mb-1">
+          <span className="text-[8px] font-black text-slate-400 dark:text-white/20 uppercase tracking-tighter mb-1">Estadio</span>
+          <span className="text-[9px] font-bold text-slate-600 dark:text-white/50 uppercase tracking-tighter truncate max-w-[150px] mb-1">
             {venue.stadium}
           </span>
           {isPredicted && prediction.updatedAt && (
@@ -298,7 +298,7 @@ export default function MatchCard({ id, homeTeam, awayTeam, date, time, kickoff,
               ? 'bg-green-500/20 border-green-500/40 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.15)]'
               : pointsWon < 0
                 ? 'bg-red-500/20 border-red-500/40 text-red-400'
-                : 'bg-white/5 border-white/10 text-white/40'
+                : 'bg-black/5 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/40'
             }`}>
               {pointsWon > 0 ? `+${pointsWon}` : pointsWon} Pts
             </span>
@@ -313,7 +313,7 @@ export default function MatchCard({ id, homeTeam, awayTeam, date, time, kickoff,
                 } ${
                   isDouble 
                   ? 'bg-amber-500 border-amber-500 text-black shadow-lg scale-110' 
-                  : 'bg-white/5 border-white/10 text-white/40'
+                  : 'bg-black/5 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-500 dark:text-white/40'
                 }`}
                 title={isLocked ? "Bloqueado por estar En Vivo/Finalizado" : "Activar Doble o Nada"}
               >

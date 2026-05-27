@@ -399,7 +399,7 @@ export default function ProfilePage() {
                   </div>
 
                   {paymentReceipt ? (
-                    <div className="relative w-full sm:w-48 h-32 rounded-xl overflow-hidden border border-white/10 bg-black/20 flex items-center justify-center">
+                    <div className="relative w-full sm:w-48 h-32 rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 bg-black/5 dark:bg-black/20 flex items-center justify-center">
                       <img src={paymentReceipt} alt="Soporte" className="w-full h-full object-contain" />
                       <button
                         type="button"
@@ -410,7 +410,7 @@ export default function ProfilePage() {
                       </button>
                     </div>
                   ) : (
-                    <div className="w-full sm:w-48 h-32 rounded-xl border border-white/5 bg-black/10 flex items-center justify-center text-[10px] text-white/20 uppercase tracking-widest font-black text-center p-4">
+                    <div className="w-full sm:w-48 h-32 rounded-xl border border-slate-200 dark:border-white/5 bg-black/5 dark:bg-black/10 flex items-center justify-center text-[10px] text-slate-400 dark:text-white/20 uppercase tracking-widest font-black text-center p-4">
                       Sin soporte adjunto
                     </div>
                   )}
