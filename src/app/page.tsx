@@ -78,10 +78,10 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-6xl md:text-8xl font-black tracking-tighter mb-6 italic leading-[0.8] font-outfit"
+          className="text-6xl md:text-8xl font-black tracking-tighter mb-6 italic leading-[0.95] font-outfit"
         >
           MUNDIAL <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">PRO 2026</span>
+          <span className="inline-block pr-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">PRO 2026</span>
         </motion.h1>
 
         <motion.p 
@@ -187,6 +187,9 @@ export default function Home() {
                   </p>
                   <p>
                     💳 <strong>Método de Pago:</strong> Aceptado únicamente vía <strong>Pago Móvil</strong> o <strong>Transferencia Bancaria</strong>.
+                  </p>
+                  <p>
+                    ⏱️ <strong>Verificación de Pago:</strong> Para garantizar la transparencia y seguridad, la validación de cada Pago Móvil o transferencia se realiza manualmente. Ante una alta afluencia de participantes, la aprobación podría tardar unas horas. ¡Agradecemos tu paciencia!
                   </p>
                   <p>
                     🔑 <strong>Registro:</strong> Accede a la plataforma utilizando tu cuenta de Google. Tu perfil, puntuaciones y ligas quedarán vinculados de forma segura a tu correo.
