@@ -269,6 +269,20 @@ export default function Home() {
         )}
       </AnimatePresence>
 
+      {/* Footer / Branding */}
+      <footer className="w-full border-t border-slate-200/10 dark:border-white/5 py-10 mt-20 flex flex-col items-center gap-4 bg-slate-100/50 dark:bg-black/20 backdrop-blur-md relative z-10">
+        <div className="flex items-center gap-3">
+          <img src="/ayg-logo.png" alt="A&G System Solutions, C.A." className="h-10 w-auto object-contain dark:brightness-0 dark:invert" />
+          <div className="flex flex-col text-left">
+            <span className="text-[10px] font-bold text-slate-400 dark:text-white/40 uppercase tracking-widest leading-none">Desarrollado por</span>
+            <span className="text-xs font-black text-slate-800 dark:text-white/70 uppercase tracking-tight">A&G System Solutions, C.A.</span>
+          </div>
+        </div>
+        <p className="text-center text-[10px] text-slate-500 dark:text-white/30 font-medium font-outfit max-w-md">
+          © {new Date().getFullYear()} Quiniela Pro 2026. Todos los derechos reservados.
+        </p>
+      </footer>
+
       {/* Decorative Floating Balls */}
       <div className="absolute top-1/2 -left-20 w-40 h-40 bg-white/5 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-1/4 -right-20 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
