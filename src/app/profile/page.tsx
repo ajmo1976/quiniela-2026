@@ -254,16 +254,16 @@ export default function ProfilePage() {
                 <div>
                   <p className="font-bold text-slate-800 dark:text-white uppercase tracking-wider text-[10px]">Pago Móvil:</p>
                   <p>Banco: **Mercantil (0105)**</p>
-                  <p>Teléfono: **0424-1234567**</p>
-                  <p>Cédula: **V-12345678**</p>
+                  <p>Teléfono: **0416-6138013**</p>
+                  <p>Cédula: **V-12.688.383**</p>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div>
                   <p className="font-bold text-slate-800 dark:text-white uppercase tracking-wider text-[10px]">Transferencia Bancaria:</p>
-                  <p>Banco: **Mercantil (0105)**</p>
-                  <p>Cuenta: **0105-0123-45-6789012345**</p>
-                  <p>Nombre: **Arnaldo Martínez**</p>
-                  <p>Cédula: **V-12345678**</p>
+                  <p>Banco: **Mercantil (0105) - Cuenta Corriente**</p>
+                  <p>Cuenta: **0105-0031-11-1031636196**</p>
+                  <p>Nombre: **Arnaldo Jose Martinez**</p>
+                  <p>Cédula: **V-12.688.383**</p>
                 </div>
               </div>
             </div>
