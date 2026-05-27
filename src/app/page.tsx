@@ -272,7 +272,7 @@ export default function Home() {
       {/* Footer / Branding */}
       <footer className="w-full border-t border-slate-200/10 dark:border-white/5 py-10 mt-20 flex flex-col items-center gap-4 bg-slate-100/50 dark:bg-black/20 backdrop-blur-md relative z-10">
         <div className="flex items-center gap-3">
-          <img src="/ayg-logo.png" alt="A&G System Solutions, C.A." className="h-10 w-auto object-contain dark:brightness-0 dark:invert" />
+          <img src="/ayg-logo.png" alt="A&G System Solutions, C.A." className="h-10 w-auto object-contain" />
           <div className="flex flex-col text-left">
             <span className="text-[10px] font-bold text-slate-400 dark:text-white/40 uppercase tracking-widest leading-none">Desarrollado por</span>
             <span className="text-xs font-black text-slate-800 dark:text-white/70 uppercase tracking-tight">A&G System Solutions, C.A.</span>
