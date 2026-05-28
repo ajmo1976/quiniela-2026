@@ -95,18 +95,14 @@ export default function LoginPage() {
               className="relative mb-6"
             >
               {/* Ball glow */}
-              <div className="absolute inset-0 blur-2xl bg-amber-500/40 rounded-full scale-150" />
-              <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600 flex items-center justify-center shadow-xl shadow-amber-500/30">
-                <span className="text-3xl">⚽</span>
+              <div className="absolute inset-0 blur-2xl bg-amber-500/30 rounded-full scale-150" />
+              <div className="relative w-20 h-24 flex items-center justify-center">
+                <img
+                  src="/world-cup-logo.png"
+                  alt="FIFA World Cup 2026"
+                  className="h-24 w-auto object-contain drop-shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                />
               </div>
-              {/* Crown badge */}
-              <motion.div
-                className="absolute -top-2 -right-2 bg-teal-400 rounded-full w-7 h-7 flex items-center justify-center shadow-lg shadow-teal-500/50"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <span className="text-sm">👑</span>
-              </motion.div>
             </motion.div>
 
             <motion.h1
